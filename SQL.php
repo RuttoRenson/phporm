@@ -17,9 +17,11 @@ class SQLQuery extends DBConn
     {
         $result = self::getConnection()->query($sql);
         $arr = array();
-        if(mysqli_num_rows($result) > 0){
-                while ($row = mysqli_fetch_assoc($result)) {
-                array_push($arr, $row);
+        if($result){
+            if(mysqli_num_rows($result) > 0){
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    array_push($arr, $row);
+                }
             }
         }
         self::closeConnection();
